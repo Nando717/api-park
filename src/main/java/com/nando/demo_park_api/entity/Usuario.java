@@ -22,7 +22,7 @@ public class Usuario implements Serializable {
     @Column(name = "password", nullable = false,unique = true ,length = 40)
     private String password;
 
-    @Column(name = "role")
+    @Column(name = "role", nullable = false, unique = true, length = 20)
     private  Role role;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataModificacao;
