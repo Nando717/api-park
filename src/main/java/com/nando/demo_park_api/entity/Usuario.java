@@ -25,6 +25,9 @@ public class Usuario implements Serializable {
     @Column(name = "password", nullable = false,unique = false ,length = 200)
     private String password;
 
+    @Column(name = "placa", unique = true, length = 10)
+    private String placa;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, unique = true, length = 25)
     private  Role role;
