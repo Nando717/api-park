@@ -7,6 +7,7 @@ import com.nando.demo_park_api.service.UsuarioService;
 import com.nando.demo_park_api.web.dto.UsuarioCreateDTO;
 import com.nando.demo_park_api.web.dto.UsuarioResponseDto;
 import com.nando.demo_park_api.web.dto.mapper.UsuarioMapper;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
