@@ -60,7 +60,7 @@ public class UsuarioController {
         return ResponseEntity.ok(users);
     }
 
-    @PutMapping("usuario/{id}")
+    @PutMapping("/usuario/{id}")
     public ResponseEntity<Object>atualizarUsuario(@PathVariable(value = "id") Long id,
                                                   @RequestBody @Valid UsuarioResponseDto usuarioResponseDto){
         Optional<Usuario>usU = usuarioRepository.findById(id);
@@ -76,6 +76,19 @@ public class UsuarioController {
 
     }
 
+    @DeleteMapping("/usuario/{id}")
+    public ResponseEntity<Object>deleteUsuario(@PathVariable(value = "id") Long id){
+        Optional<Usuario> usU = usuarioRepository.findById(id);
+
+        if (usU.isEmpty()){
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario não encontrado");
+
+        }
+
+        usuarioRepository.delete(usU.get());
+
+        return ResponseEntity.status(HttpStatus.OK).body("usuario deletado");
+    }
 
 
 
