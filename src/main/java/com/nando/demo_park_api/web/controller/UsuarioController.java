@@ -1,23 +1,30 @@
 package com.nando.demo_park_api.web.controller;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.nando.demo_park_api.entity.Usuario;
+import com.nando.demo_park_api.repository.UsuarioRepository;
 import com.nando.demo_park_api.service.UsuarioService;
 import com.nando.demo_park_api.web.dto.UsuarioCreateDTO;
 import com.nando.demo_park_api.web.dto.UsuarioResponseDto;
 import com.nando.demo_park_api.web.dto.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/usuarios")
 @RequiredArgsConstructor
 
 public class UsuarioController {
+
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
     private final UsuarioService usuarioService;
 
@@ -51,6 +58,22 @@ public class UsuarioController {
        List<Usuario> users = usuarioService.buscarTodos();
 
         return ResponseEntity.ok(users);
+    }
+
+    @PutMapping("usuario/{id}")
+    public ResponseEntity<Object>atualizarUsuario(@PathVariable(value = "id") Long id,
+                                                  @RequestBody @Valid UsuarioResponseDto usuarioResponseDto){
+        Optional<Usuario>usU = usuarioRepository.findById(id);
+
+        if (usU.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("usuario não encontrado");
+        }
+
+        var usuario = usU.get();
+        BeanUtils.copyProperties(usuarioResponseDto, usuario);
+
+        return  ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario));
+
     }
 
 

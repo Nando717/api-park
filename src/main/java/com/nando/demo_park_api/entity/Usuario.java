@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Getter @Setter @NoArgsConstructor
 @Entity
-@Table(name = "usuarios")
+@Table(name ="usuarios")
 
 public class Usuario implements Serializable {
 
@@ -22,15 +22,15 @@ public class Usuario implements Serializable {
     @Column(name = "username", nullable = false, unique = true, length = 100)
     private String username;
 
-    @Column(name = "password", nullable = false,unique = false ,length = 200)
+    @Column(name = "password", nullable = false,length = 200)
     private String password;
 
     @Column(name = "placa", unique = true, length = 10)
     private String placa;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "role",nullable = false, length = 25)
-    private  Role role = Role.ROLE_CLIENTE;
+    @Column(name = "role",nullable =false, length = 25)
+    private  Role role = Role.ROLE_CLIENT;
 
     @Column(name = "Data_criacao")
     private LocalDateTime dataCriacao;
@@ -44,8 +44,8 @@ public class Usuario implements Serializable {
     @Column(name = "modificado_por")
     private String modificadoPor;
 
-    public enum Role{
-        ROLE_ADMIN,ROLE_CLIENTE
+    public enum Role {
+        ROLE_ADMIN,ROLE_CLIENT
     }
 
     @Override

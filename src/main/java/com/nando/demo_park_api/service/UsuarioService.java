@@ -2,6 +2,8 @@ package com.nando.demo_park_api.service;
 
 import com.nando.demo_park_api.entity.Usuario;
 import com.nando.demo_park_api.repository.UsuarioRepository;
+import com.nando.demo_park_api.web.dto.UsuarioCreateDTO;
+import com.nando.demo_park_api.web.dto.UsuarioResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

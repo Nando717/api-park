@@ -3,7 +3,7 @@ package com.nando.demo_park_api.web.dto;
 
 import lombok.*;
 
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
+@Data @NoArgsConstructor @AllArgsConstructor @ToString
 public class UsuarioResponseDto {
 
     private Long id;
