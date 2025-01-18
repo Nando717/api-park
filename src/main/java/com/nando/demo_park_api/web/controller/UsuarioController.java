@@ -1,6 +1,6 @@
 package com.nando.demo_park_api.web.controller;
 
-import com.fasterxml.jackson.databind.util.BeanUtil;
+
 import com.nando.demo_park_api.entity.Usuario;
 import com.nando.demo_park_api.repository.UsuarioRepository;
 import com.nando.demo_park_api.service.UsuarioService;
