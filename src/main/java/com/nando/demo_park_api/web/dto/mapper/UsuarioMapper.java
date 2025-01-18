@@ -14,7 +14,7 @@ public class UsuarioMapper {
 
     public static UsuarioResponseDto toDto(Usuario usuario) {
         String role = usuario.getRole().name().substring("ROLE_".length());
-        ModelMapper mapperMain = new ModelMappergit;
+        ModelMapper mapperMain = new ModelMapper();
         TypeMap<Usuario, UsuarioResponseDto> propertyMapper =
                 mapperMain.createTypeMap(Usuario.class, UsuarioResponseDto.class);
         propertyMapper.addMappings(
